@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="page-header">
+      <h1 class="text-center">Registration Form</h1>
+  </div>
+  <form [formGroup]="form" (submit)="onRegisterSubmit()">
+
+      <!-- Username Input -->
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <div>
+          <input type="text" name="firstname" class="form-control" autocomplete="off" placeholder="*Firstname" formControlName="firstname" />
+        </div>
+
+        <label for="lastname">Lastname</label>
+        <div>
+          <input type="text" name="lastname" class="form-control" autocomplete="off" placeholder="*Lastname" formControlName="lastname" />
+        </div>
+
+        <label for="gender">Gender</label>
+        <label *ngFor="let gender of genders" class="radio-inline">
+            <input type="radio" name="gender" formControlName="gender" [value]="gender.value">{{gender.display}}
+        </label> <br>
+
+        <label for="sel1">Select list:</label>
+        <select multiple class="form-control" id="sel1" formControlName="topic">
+          <option *ngFor="let topic of topics" [value]="topic.value">
+            {{ topic.display}}
+          </option>
+        </select>
+        
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Register"/>
+  </form>
+</div>
